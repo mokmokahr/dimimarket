@@ -3,6 +3,12 @@
     padding: 0px;
     font-family: 'Jua', sans-serif;
 }
+header{
+    display: inline-block;
+    position: fixed;
+    width: 100vw;
+}
+
 header>#header-container{
     display: flex;
     flex-direction: row;
@@ -18,6 +24,15 @@ header>#color-line{
     height: 0.4rem;
     width: 100%;
 }
+header>div#logo-line{
+    background-color: #e83c77;
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+}
+div#zero-page{
+    height: 30vh;
+}
 div#intro-page>p{
     text-align: center;
     font-size: 3.5rem;
@@ -25,16 +40,20 @@ div#intro-page>p{
 div#intro-page{
     display: flex;
     flex-direction: column;
-    height: 50vw;
+    justify-content: center;
+    height: 50vh;
 }
-div#intro-page>button#go-to-dimimarket{
-    display: flex;
-    flex-direction: row;
-    width: 30vw;
+div#intro-page>div>button#go-to-dimimarket{
+    display: inline-block;
+    padding: 1rem;
     font-size: 2rem;
+    border: none;
+    background-color: white;
+    border-radius: 3rem;
 }
-div#intro-page>button#go-to-dimimarket>p{
-    text-align: center;
+
+div#intro-page>div>button#go-to-dimimarket:hover{
+    cursor: pointer;
 }
 
 img#bottom-img{
@@ -42,4 +61,7 @@ img#bottom-img{
     position: fixed;
     width: 100vw;
     z-index: -1;
+}
+div#intropage>div#parent-of-button{
+    text-align: center;
 }
