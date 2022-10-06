@@ -63,5 +63,7 @@ img#bottom-img{
     z-index: -1;
 }
 div#intropage>div#parent-of-button{
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
 }
