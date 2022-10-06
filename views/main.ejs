@@ -7,11 +7,10 @@
     <title>MainPage</title>
 </head>
 <body>
-    <%for i in numbers%>
-    <%{%>
-        <div>
-            <h3>title</h3>
-            <p>contents</p>
+    <%for(i in numbers){%>
+        <div id="product-box">
+            <h3 id="product-box-title">title</h3>
+            <p id="product-box-contents">contents</p>
         </div>
     <%}%>
 </body>

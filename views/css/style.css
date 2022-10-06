@@ -43,16 +43,26 @@ div#intro-page{
     justify-content: center;
     height: 50vh;
 }
-div#intro-page>div>button#go-to-dimimarket{
+
+div#intro-page>form{
+    position: relative;
+}
+
+div#intro-page>form>button#go-to-dimimarket{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
     display: inline-block;
     padding: 1rem;
     font-size: 2rem;
-    border: none;
+    border: solid 0.2rem #e83c77;
     background-color: white;
     border-radius: 3rem;
+    margin-top: 1rem;
 }
 
-div#intro-page>div>button#go-to-dimimarket:hover{
+div#intro-page>form>button#go-to-dimimarket:hover{
     cursor: pointer;
 }
 
