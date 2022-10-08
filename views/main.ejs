@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +7,9 @@
     <title>MainPage</title>
 </head>
 <body>
-    <%for(i in numbers){%>
-        <div id="product-box">
-            <h3 id="product-box-title">title</h3>
-            <p id="product-box-contents">contents</p>
-        </div>
-    <%}%>
+    <div id="product-box">
+        <h3 id="product-box-title">title : <%=title[0]%></h3>
+        <p id="product-box-contents">description :</p>
+    </div>
 </body>
 </html>

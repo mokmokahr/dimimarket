@@ -12,15 +12,7 @@ let connection = mysql.createConnection({
     database: process.env.DATABASE
 });
 
-
 connection.connect();
-
-connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-    if (error) throw error;
-    console.log('The solution is: ', results[0].solution);
-});
-
-connection.end();
 
 app.use(express.static("views"));
 
@@ -32,9 +24,32 @@ app.get('/', (req, res) => {
 });
 
 app.get('/main', (req, res) => {
-    res.render("main.ejs", { numbers: " " });
+    let i = 0;
+    let id = [], title = [], desc = [], created = [], author = [], profile =[];
+    connection.query("SELECT * FROM product", function (error, rows) {
+        if (error) throw error;
+        for(i; i < rows.length; i++){
+            console.log(rows[i].id);
+            id[i] = rows[i].id;
+            title[i] = rows[i].title;
+            desc[i] = rows[i].description;
+            created[i] = rows[i].created;
+            author[i] = rows[i].author;
+            profile[i] = rows[i].profile;
+        }
+    });
+    res.render("main.ejs",{
+        id:id,
+        title:title,
+        length:i
+    },()=>{
+        if(err){
+            console.log(err);
+        }
+    });
 });
 
+
 app.listen("3000", () => {
-    console.log("server is running on the 3000 port...");
+    console.log("\n\n\n\n\n\nserver is running on the 3000 port...");
 });
