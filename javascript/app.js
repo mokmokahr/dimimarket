@@ -14,6 +14,20 @@ let connection = mysql.createConnection({
 
 connection.connect();
 
+let id = [], title = [], desc = [], created = [], author = [], profile =[];
+connection.query("SELECT * FROM product", function (error, rows) {
+    if (error) throw error;
+    for(let i= 0; i < rows.length; i++){
+        console.log(rows[i].id);
+        id[i] = rows[i].id;
+        title[i] = rows[i].title;
+        desc[i] = rows[i].description;
+        created[i] = rows[i].created;
+        author[i] = rows[i].author;
+        profile[i] = rows[i].profile;
+    }
+});
+
 app.use(express.static("views"));
 
 app.set('views', './views');
@@ -24,28 +38,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/main', (req, res) => {
-    let i = 0;
-    let id = [], title = [], desc = [], created = [], author = [], profile =[];
-    connection.query("SELECT * FROM product", function (error, rows) {
-        if (error) throw error;
-        for(i; i < rows.length; i++){
-            console.log(rows[i].id);
-            id[i] = rows[i].id;
-            title[i] = rows[i].title;
-            desc[i] = rows[i].description;
-            created[i] = rows[i].created;
-            author[i] = rows[i].author;
-            profile[i] = rows[i].profile;
-        }
-    });
     res.render("main.ejs",{
         id:id,
         title:title,
-        length:i
-    },()=>{
-        if(err){
-            console.log(err);
-        }
+        desc:desc,
+        created:created,
+        author:author,
+        profile:profile
     });
 });
 
