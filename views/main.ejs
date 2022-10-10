@@ -24,14 +24,21 @@
     </header>
     <div id="zero-page"></div>
     <div id="exploain-text">This page is main page!</div>
-    <%for (let i =0; i<id.length; i++){%>
-        <div class="product-box">
-            <h3 id="product-box-title"><%=title[i]%></h3>
-            <p id="product-box-contents"><%=desc[i]%></p>
-            <p id="author">게시자:<%=author[i]%></p>
-            <p id="profile"><%=profile[i]%></p>
-            <p id="created-data"><%=created[i]%></p>
-        </div>
-    <%}%>
+    <div id="product-box-container">
+        <%for (let i =0; i<id.length; i++){%>
+            <div class="product-box">
+                <h3 class="product-box-title"><%=title[i]%></h3>
+                <p class="product-box-contents"><%=desc[i]%></p>
+                <p class="author">게시자:<%=author[i]%>(<%=profile[i]%>)</p>
+                <p class="created-data"><%=created[i]%></p>
+            </div>
+        <%}%>
+    </div>
+    <div onclick="goToCreatePage();" id="create-btn">+</div>
+    <script>
+        function goToCreatePage(){
+            location.href = "/create";
+        }
+    </script>
 </body>
 </html>

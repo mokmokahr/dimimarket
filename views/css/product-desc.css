@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0px;
+    font-family: 'Jua', sans-serif;
+}
+body{
+    background-color: #F8F9FA;
+}
+header{
+    display: inline-block;
+    position: fixed;
+    width: 100vw;
+}
+header>#header-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: white;
+    height: 3rem;
+    padding-top: 0.3rem;
+    font-size: 2rem;
+    color: #e83c77;
+}
+header>#color-line{
+    background-color: #e83c77;
+    height: 0.4rem;
+    width: 100%;
+}
+header>div#logo-line{
+    background-color: #e83c77;
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+}
+
+div#zero-page{
+    height: 6.7rem;
+}

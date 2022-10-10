@@ -3,12 +3,12 @@
     padding: 0px;
     font-family: 'Jua', sans-serif;
 }
+
 header{
     display: inline-block;
     position: fixed;
     width: 100vw;
 }
-
 header>#header-container{
     display: flex;
     flex-direction: row;

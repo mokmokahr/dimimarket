@@ -37,7 +37,7 @@ div#zero-page{
     height: 6.7rem;
 }
 
-div.product-box{
+div>div.product-box{
     margin: 1rem;
     padding: 2rem;
     background-color: #F8F9FA;
@@ -46,4 +46,37 @@ div.product-box{
     border-radius: 3rem;
     font-size: 1rem;
     text-align: center;
+    width: 20vw;
+}
+div#product-box-container{
+    width: 80vw;
+    margin-top: 3vh;
+    margin-left: 10vw;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    flex-wrap: wrap-reverse;
+}
+
+div>div.product-box>p.created-data{
+    font-size: 0.5rem;
+    color: gray;
+}
+
+div#create-btn{
+    position: fixed;
+    font-size: 5rem;
+    background: #e83c77;
+    color: white;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 30rem;
+    width: 5rem;
+    height: 5rem;
+    text-align: center;
+    bottom: 0;
+    right: 0;
+}
+div#create-btn:hover{
+    cursor: pointer;
 }

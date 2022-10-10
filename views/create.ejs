@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register-product</title>
+    <link rel="stylesheet" href="./css/create.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="logo-line">
+            <p>DIMI MARKET</p>
+        </div>
+        <div id="header-container">
+            <ul id="home">홈</ul>
+            <ul id="search">검색</ul>
+            <ul id="profile">프로필</ul>
+        </div>
+        <div id="color-line"></div>
+    </header>
+    <div id="zero-page"></div>
+    <form action="/main">
+        <input type="text" placeholder="제목을 입력하세요.">
+        <input type="text" placeholder="제품설명">
+        <input type="file" class="real-upload" accept="image/*" required multiple style="display: none;">
+        <div class="upload">사진첨부</div>
+        <button>상품 업로드하기</button>
+    </form>
+    <script>
+        const realUpload = document.querySelector('.real-upload');
+        const upload = document.querySelector('.upload');
+        upload.addEventListener('click', () => realUpload.click());
+    </script>
+</body>
+
+</html>

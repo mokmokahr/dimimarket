@@ -18,7 +18,6 @@ let id = [], title = [], desc = [], created = [], author = [], profile =[];
 connection.query("SELECT * FROM product", function (error, rows) {
     if (error) throw error;
     for(let i= 0; i < rows.length; i++){
-        console.log(rows[i].id);
         id[i] = rows[i].id;
         title[i] = rows[i].title;
         desc[i] = rows[i].description;
@@ -46,6 +45,14 @@ app.get('/main', (req, res) => {
         author:author,
         profile:profile
     });
+});
+
+app.get('/main/product-desc',(req,res)=>{
+    res.render("product-desc.ejs");
+});
+
+app.get('/create',(req,res)=>{
+    res.render("create.ejs");
 });
 
 
