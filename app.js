@@ -28,6 +28,7 @@ connection.query("SELECT * FROM product", function (error, rows) {
 });
 
 app.use(express.static("views"));
+app.use(express.static('public'));
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
@@ -55,7 +56,25 @@ app.get('/create',(req,res)=>{
     res.render("create.ejs");
 });
 
+app.get('/login_get',(req,res)=>{
+    res.render("login.ejs");
+});
+
+app.post('/login',(req,res)=>{
+    console.log(req.body.user_id);
+    res.redirect('/main');
+});
 
 app.listen("3000", () => {
     console.log("\n\n\n\n\n\nserver is running on the 3000 port...");
 });
+
+//cookie
+/*
+const http = require('http');
+http.createServer(function (request, response) {
+    response.writeHead(200, {
+        'Set-Cookie': ['yummy_cookie=choco', 'tasty_cookie=strawberry']
+    });
+    response.end('Cookie!!');
+}).listen(3000);*/

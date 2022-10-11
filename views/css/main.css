@@ -80,3 +80,7 @@ div#create-btn{
 div#create-btn:hover{
     cursor: pointer;
 }
+
+div#header-container>ul:hover{
+    cursor: pointer;
+}
