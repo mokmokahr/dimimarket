@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const bodyParser = require('body-parser');
 
 require('dotenv').config();
 
@@ -26,9 +27,19 @@ connection.query("SELECT * FROM product", function (error, rows) {
         profile[i] = rows[i].profile;
     }
 });
+let user_id = [], user_pw = [];
+let isPasswordCorrect = false, isIdExist = false, isLogined = false;
+connection.query("SELECT * FROM login_info", function (error, rows) {
+    if (error) throw error;
+    for(let i= 0; i < rows.length; i++){
+        user_id[i] = rows[i].user_id;
+        user_pw[i] = rows[i].user_pw;
+    }
+});
 
 app.use(express.static("views"));
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
@@ -57,12 +68,38 @@ app.get('/create',(req,res)=>{
 });
 
 app.get('/login_get',(req,res)=>{
-    res.render("login.ejs");
+    if(isLogined){
+        console.log("you are already logined. Do you want to logout?");
+        res.redirect('/');
+    }
+    else{res.render("login.ejs");}
 });
 
 app.post('/login',(req,res)=>{
-    console.log(req.body.user_id);
-    res.redirect('/main');
+    const userIdInput = req.body.user_id, userPwInput = req.body.user_pw;
+    for(let i = 0; i<user_id.length; i++){
+        if(isLogined){
+            break;
+        }
+        if(userIdInput == user_id[i]){
+            isIdExist = true;
+            if(userPwInput == user_pw[i]){
+                isPasswordCorrect = true;
+            }
+        }
+    }
+    if(isIdExist == true && isPasswordCorrect == true){
+        isLogined = true;
+        console.log("login suceed");
+    }
+    else if(isIdExist == false){
+        console.log("id does not exist");
+    }
+    else if(isPasswordCorrect == false){
+        console.log("password do not match");
+    }
+    isIdExist = false;
+    res.redirect('/');
 });
 
 app.listen("3000", () => {
@@ -71,10 +108,7 @@ app.listen("3000", () => {
 
 //cookie
 /*
-const http = require('http');
-http.createServer(function (request, response) {
-    response.writeHead(200, {
-        'Set-Cookie': ['yummy_cookie=choco', 'tasty_cookie=strawberry']
-    });
-    response.end('Cookie!!');
-}).listen(3000);*/
+해야할것: 쿠키
+상품 CUD(R이미구현)
+채팅서비스
+*/
