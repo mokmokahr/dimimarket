@@ -76,7 +76,7 @@ app.get('/login_get',(req,res)=>{
 });
 
 app.post('/login',(req,res)=>{
-    const userIdInput = req.body.user_id, userPwInput = req.body.user_pw;
+    let userIdInput = req.body.user_id, userPwInput = req.body.user_pw;
     for(let i = 0; i<user_id.length; i++){
         if(isLogined){
             break;
@@ -102,11 +102,24 @@ app.post('/login',(req,res)=>{
     res.redirect('/');
 });
 
-app.listen("3000", () => {
-    console.log("\n\n\n\n\n\nserver is running on the 3000 port...");
+app.get('/signup',(req,res)=>{
+    res.render("signup.ejs");
 });
 
-//cookie
+app.post('/signup_p',(req,res)=>{
+    connection.query("INSERT INTO login_info (user_id, name, user_pw, signup_date) VALUES (?,?,?,NOW());",[req.body.id,req.body.name,req.body.pw], function (error, rows) {
+        if (error) throw error;
+        else{
+            console.log(rows.insertId);//생성될때 auto increasement의 값
+            res.render("login.ejs");
+        }
+    });
+})
+
+app.listen("3000", () => {
+    console.log("\n\n\n\n\n\nserver is running on the 3000 port...\n\n\n\n\n");
+});
+
 /*
 해야할것: 쿠키
 상품 CUD(R이미구현)
